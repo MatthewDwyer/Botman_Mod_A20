@@ -96,7 +96,7 @@ namespace Botman.Source.BotModEvents
         // todo: add a check for sensible values on position
 
         // Clear return position
-        PersistentContainer.Instance.Players[_clientInfo.CrossplatformId, true].MarkedForReturn = null;
+        PersistentContainer.Instance.Players[_clientInfo.CrossplatformId.CombinedString, true].MarkedForReturn = null;
 
         // Teleport player to position
         _clientInfo.SendPackage(NetPackageManager.GetPackage<NetPackageTeleportPlayer>().Setup(new Vector3(x, y, z)));

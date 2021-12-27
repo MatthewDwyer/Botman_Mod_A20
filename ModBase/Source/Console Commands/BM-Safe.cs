@@ -348,7 +348,7 @@ namespace Botman.Commands
 
       Thread.Sleep(50);
 
-      BMReload.ReloadForClients(chunks, cInfo.CrossplatformId);
+      BMReload.ReloadForClients(chunks);
 
       if (setProtected)
       {

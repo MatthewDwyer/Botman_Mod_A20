@@ -6,7 +6,7 @@ namespace Botman
 {
   public static class BMReload
   {
-    public static int ReloadForClients(Dictionary<long, Chunk> chunks, PlatformUserIdentifierAbs CrossplatformId)
+    public static int ReloadForClients(Dictionary<long, Chunk> chunks, string Id = "")
     {
       var world = GameManager.Instance.World;
       if (world == null) { return 0; }
@@ -19,7 +19,7 @@ namespace Botman
       {
         try
         {
-          if (CrossplatformId != null && CrossplatformId != clientInfo.CrossplatformId) { continue; }
+          if (Id != "" && Id != clientInfo.CrossplatformId.CombinedString) { continue; }
 
           if (!world.Entities.dict.ContainsKey(clientInfo.entityId)) { continue; }
 

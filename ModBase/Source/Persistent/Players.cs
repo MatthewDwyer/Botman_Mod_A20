@@ -6,29 +6,29 @@ namespace Botman
   [Serializable]
   public class Players
   {
-    public Dictionary<PlatformUserIdentifierAbs, Player> players = new Dictionary<PlatformUserIdentifierAbs, Player>();
-    public Dictionary<PlatformUserIdentifierAbs, List<PlatformUserIdentifierAbs>> clans = new Dictionary<PlatformUserIdentifierAbs, List<PlatformUserIdentifierAbs>>();
+    public Dictionary<string, Player> players = new Dictionary<string, Player>();
+    public Dictionary<string, List<string>> clans = new Dictionary<string, List<string>>();
 
-    public List<PlatformUserIdentifierAbs> PlatformIDs => new List<PlatformUserIdentifierAbs>(players.Keys);
+    public List<string> IDs => new List<string>(players.Keys);
 
-    public Player this[PlatformUserIdentifierAbs PlatformId, bool create]
+    public Player this[string Id, bool create]
     {
       get
       {
-        if (string.IsNullOrEmpty(PlatformId.CombinedString))
+        if (string.IsNullOrEmpty(Id))
         {
           return null;
         }
 
-        if (players.ContainsKey(PlatformId))
+        if (players.ContainsKey(Id))
         {
-          return players[PlatformId];
+          return players[Id];
         }
 
         if (create)
         {
-          var player = new Player(PlatformId);
-          players.Add(PlatformId, player);
+          var player = new Player(Id);
+          players.Add(Id, player);
           return player;
         }
 
@@ -36,27 +36,21 @@ namespace Botman
       }
     }
 
-    public PlatformUserIdentifierAbs GetSteamId(string _nameorid)
+    public string GetId(string _nameORId)
     {
-      //// todo: this is broken. Also needs to confirm it is a 'long' to be a valid steam id
-      //if (_nameorid.Length == 23)
-      //{
-      //  return _nameorid;
-      //}
-
-      var _cInfo = ConsoleHelper.ParseParamIdOrName(_nameorid, true, true);
+      var _cInfo = ConsoleHelper.ParseParamIdOrName(_nameORId, true, true);
       if (_cInfo != null)
       {
-        return _cInfo.PlatformId;
+        return _cInfo.CrossplatformId.CombinedString;
       }
 
-      foreach (var PlatformId in PersistentContainer.Instance.Players.PlatformIDs)
+      foreach (var id in PersistentContainer.Instance.Players.IDs)
       {
-        var name = PersistentContainer.Instance.Players[PlatformId, true].PlayerName;
+        var name = PersistentContainer.Instance.Players[id, true].PlayerName;
         {
-          if (name != null && name.StartsWith(_nameorid, StringComparison.InvariantCultureIgnoreCase))
+          if (name != null && name.StartsWith(_nameORId, StringComparison.InvariantCultureIgnoreCase))
           {
-            return PersistentContainer.Instance.Players[PlatformId, true].PlatformID;
+            return PersistentContainer.Instance.Players[id, true].ID;
           }
         }
       }

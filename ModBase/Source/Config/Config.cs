@@ -337,51 +337,51 @@ namespace Botman
                   }
                 }
                 break;
-              //case "clans":
-              //  {
-              //    if (!_line.HasAttribute("enabled"))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.enabled from config.xml because of missing attribute: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!bool.TryParse(_line.GetAttribute("enabled"), out BMClans.Enabled))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.enabled from config.xml because of missing attribute: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!_line.HasAttribute("max_clans"))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_clans from config.xml because of missing attribute: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!int.TryParse(_line.GetAttribute("max_clans"), out BMClans.MaxClansAllowed))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_clans from config.xml entry because of invalid (non-numeric) value: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!_line.HasAttribute("max_players"))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_players from config.xml because of missing attribute: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!int.TryParse(_line.GetAttribute("max_players"), out BMClans.PlayerLimit))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_players from config.xml entry because of invalid (non-numeric) value: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!_line.HasAttribute("required_level_to_create"))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.required_level_to_create from config.xml because of missing attribute: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //    if (!int.TryParse(_line.GetAttribute("required_level_to_create"), out BMClans.LevelToCreate))
-              //    {
-              //      Log.Warning(string.Format("~Botman Notice~ Ignoring clans.required_level_to_create from config.xml entry because of invalid (non-numeric) value: {0}", subChild.OuterXml));
-              //      continue;
-              //    }
-              //  }
-              //  break;
-              case "custommessages":
+                case "clans":
+                    {
+                        if (!_line.HasAttribute("enabled"))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.enabled from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!bool.TryParse(_line.GetAttribute("enabled"), out BMClans.Enabled))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.enabled from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!_line.HasAttribute("max_clans"))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_clans from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!int.TryParse(_line.GetAttribute("max_clans"), out BMClans.MaxClansAllowed))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_clans from config.xml entry because of invalid (non-numeric) value: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!_line.HasAttribute("max_players"))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_players from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!int.TryParse(_line.GetAttribute("max_players"), out BMClans.PlayerLimit))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.max_players from config.xml entry because of invalid (non-numeric) value: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!_line.HasAttribute("required_level_to_create"))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.required_level_to_create from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                        if (!int.TryParse(_line.GetAttribute("required_level_to_create"), out BMClans.LevelToCreate))
+                        {
+                            Log.Warning(string.Format("~Botman Notice~ Ignoring clans.required_level_to_create from config.xml entry because of invalid (non-numeric) value: {0}", subChild.OuterXml));
+                            continue;
+                        }
+                    }
+                    break;
+                case "custommessages":
                 {
                   if (!_line.HasAttribute("enabled"))
                   {

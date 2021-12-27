@@ -22,7 +22,7 @@
       if (_clientInfo == null) { return false; }
 
       // Load or create the persistent player, if _clientInfo.playerId is invalid then null is returned.
-      persistentPlayer = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId, create: true];
+      persistentPlayer = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId.CombinedString, create: true];
 
       return persistentPlayer != null;
     }

@@ -22,20 +22,20 @@ namespace Botman.Commands
         return;
       }
 
-      PlatformUserIdentifierAbs steamId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
+      string id = PersistentContainer.Instance.Players.GetId(_params[0]);
 
-      if (steamId == null)
+      if (id == null)
       {
         SdtdConsole.Instance.Output($"Could not locate {_params[0]}");
 
         return;
       }
 
-      var player = PersistentContainer.Instance.Players[steamId, true];
+      var player = PersistentContainer.Instance.Players[id, true];
 
       SdtdConsole.Instance.Output(
         $"PlayerName {player.PlayerName}\n" +
-        $"SteamId :{player.PlatformID}\n" +
+        $"Id :{id}\n" +
         $"IsOnline :{player.IsOnline}\n" +
         $"ChatName :{player.ChatName}\n" +
         $"ChatColor :{player.ChatColor}\n");

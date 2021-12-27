@@ -30,17 +30,17 @@ namespace Botman.Commands
         return;
       }
 
-      var steamId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
-      if (steamId == null)
+      var id = PersistentContainer.Instance.Players.GetId(_params[0]);
+      if (id == null)
       {
         SdtdConsole.Instance.Output("Playername or entity/steamid id not found.");
 
         return;
       }
 
-      var player = PersistentContainer.Instance.Players[steamId, true];
+      var player = PersistentContainer.Instance.Players[id, true];
       SdtdConsole.Instance.Output($"{player.PlayerName}'s chat name has been changed to {_params[1]}");
-      PersistentContainer.Instance.Players[steamId, true].PlayerName = _params[1];
+      PersistentContainer.Instance.Players[id, true].PlayerName = _params[1];
       PersistentContainer.Instance.Save();
     }
   }

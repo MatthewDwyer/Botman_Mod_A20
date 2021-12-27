@@ -54,7 +54,7 @@ namespace Botman.Source.BotModEvents
                 arg);
       }
 
-      //BMClans.LoadClans();
+      BMClans.LoadClans();
       BMResetRegions.CheckForReset();
       BMResetAllPrefabs.CheckForReset();
       BMAreaReset.CheckForReset();

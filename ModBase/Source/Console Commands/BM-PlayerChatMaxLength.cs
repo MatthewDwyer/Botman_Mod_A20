@@ -11,7 +11,7 @@ namespace Botman.Commands
     public override string GetHelp() =>
       "Set the maximum number of characters a player can write in a single message.\n" +
       "Usage:\n" +
-      "1. bm-playerchatmaxlength <steam id/player name/entity id> <chat length>\n";
+      "1. bm-playerchatmaxlength <id/player name/entity id> <chat length>\n";
 
     public override void TryExecute(IList<string> _params, CommandSenderInfo _senderInfo)
     {
@@ -30,15 +30,15 @@ namespace Botman.Commands
         return;
       }
 
-      var steamId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
-      if (steamId == null)
+      var id = PersistentContainer.Instance.Players.GetId(_params[0]);
+      if (id == null)
       {
-        SdtdConsole.Instance.Output("Player name, entity id or steam id not found.");
+        SdtdConsole.Instance.Output("Player name, entity id or EOS id not found.");
 
         return;
       }
 
-      var persistentPlayer = PersistentContainer.Instance.Players[steamId, false];
+      var persistentPlayer = PersistentContainer.Instance.Players[id, false];
       if (persistentPlayer == null)
       {
         SdtdConsole.Instance.Output("Player not found.");

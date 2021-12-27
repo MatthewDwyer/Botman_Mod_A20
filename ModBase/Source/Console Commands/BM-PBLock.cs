@@ -57,14 +57,13 @@ namespace Botman.Commands
       var nextStoreX = 0;
       var nextStoreY = 0;
       var nextStoreZ = 0;
-      var cInfo = _senderInfo.RemoteClientInfo;
 
       var blockName = "";
       if (_params.Count == 1)
       {
         if (_params[0].Equals("p1", StringComparison.InvariantCultureIgnoreCase))
         {
-          //var cInfo = _senderInfo.RemoteClientInfo;
+          var cInfo = _senderInfo.RemoteClientInfo;
           if (cInfo == null)
           {
             SdtdConsole.Instance.Output("Unable to get your position");
@@ -93,7 +92,7 @@ namespace Botman.Commands
 
         if (_params[0].Equals("l1", StringComparison.InvariantCultureIgnoreCase))
         {
-          //var cInfo = _senderInfo.RemoteClientInfo;
+          var cInfo = _senderInfo.RemoteClientInfo;
           if (cInfo == null)
           {
             SdtdConsole.Instance.Output("Unable to get your position");
@@ -147,7 +146,7 @@ namespace Botman.Commands
           return;
         }
 
-        //var cInfo = _senderInfo.RemoteClientInfo;
+        var cInfo = _senderInfo.RemoteClientInfo;
         if (cInfo == null)
         {
           SdtdConsole.Instance.Output("Unable to get your position");
@@ -214,7 +213,7 @@ namespace Botman.Commands
 
         if (xParts.Length == 1 && yParts.Length == 1 && zParts.Length == 1)
         {
-          //var cInfo = _senderInfo.RemoteClientInfo;
+          var cInfo = _senderInfo.RemoteClientInfo;
           if (cInfo == null)
           {
             SdtdConsole.Instance.Output("Unable to get your position");
@@ -420,7 +419,7 @@ namespace Botman.Commands
 
       Thread.Sleep(50);
 
-      BMReload.ReloadForClients(chunks, cInfo.CrossplatformId);
+      BMReload.ReloadForClients(chunks);
 
       var stabCalc = new StabilityCalculator();
       stabCalc.Init(GameManager.Instance.World);

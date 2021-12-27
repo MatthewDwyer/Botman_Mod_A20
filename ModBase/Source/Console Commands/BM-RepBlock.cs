@@ -109,8 +109,7 @@ namespace Botman.Commands
         max: new Vector3i(Math.Max(storedPosition.x, entityPosition.x), Math.Max(storedPosition.y, entityPosition.y), Math.Max(storedPosition.z, entityPosition.z)),
         rot: 0,
         replacementBlock: _params[2].ToLower(),
-        blockToReplace: _params[1].ToLower(),
-        _senderInfo);
+        blockToReplace: _params[1].ToLower());
     }
 
     private void Do6Params(IList<string> _params, CommandSenderInfo _senderInfo)
@@ -168,8 +167,7 @@ namespace Botman.Commands
         max: new Vector3i(Math.Max(position.x, position2.x), Math.Max(position.y, position2.y), Math.Max(position.z, position2.z)),
         rot: rot,
         replacementBlock: _params[1].ToLower(),
-        blockToReplace: _params[0].ToLower(),
-        _senderInfo);
+        blockToReplace: _params[0].ToLower());
     }
 
     private void Do9Params(IList<string> _params, CommandSenderInfo _senderInfo)
@@ -191,8 +189,7 @@ namespace Botman.Commands
         max: new Vector3i(Math.Max(x1, x2), Math.Max(y1, y2), Math.Max(z1, z2)),
         rot: rot,
         replacementBlock: _params[1].ToLower(),
-        blockToReplace: _params[0].ToLower(),
-        _senderInfo);
+        blockToReplace: _params[0].ToLower());
     }
 
     private static bool GetBlockFromNameOrId(string searchText, out int blockId, out BlockValue blockValue)
@@ -211,7 +208,7 @@ namespace Botman.Commands
       return true;
     }
 
-    private static void ReplaceBlocks(string undoEntityTag, Vector3i min, Vector3i max, int rot, string replacementBlock, string blockToReplace, CommandSenderInfo _senderInfo)
+    private static void ReplaceBlocks(string undoEntityTag, Vector3i min, Vector3i max, int rot, string replacementBlock, string blockToReplace)
     {
       if (!GetBlockFromNameOrId(blockToReplace, out var blockIdToBeReplaced, out _))
       {
@@ -278,7 +275,7 @@ namespace Botman.Commands
       GameManager.bPhysicsActive = pyState;
 
       Thread.Sleep(50);
-      BMReload.ReloadForClients(chunks, _senderInfo.RemoteClientInfo.CrossplatformId);
+      BMReload.ReloadForClients(chunks);
       var stabCalc = new StabilityCalculator();
       stabCalc.Init(GameManager.Instance.World);
 

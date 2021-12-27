@@ -16,11 +16,11 @@ namespace Botman.Patches
     public static Dictionary<string, double> Drops = new Dictionary<string, double>();
     public static Dictionary<string, DateTime> PlayerDropHistory = new Dictionary<string, DateTime>();
 
-    public static bool Prefix([NotNull] World __instance, Vector3i _block)
+    public static bool Prefix([NotNull] World __instance, Vector3i _blockPos)
     {
       if (!enabled) { return true; }
       
-      var bv = GameManager.Instance.World.GetBlock(_block);
+      var bv = GameManager.Instance.World.GetBlock(_blockPos);
       
       if (bv.Block.GetBlockName() == "bedroll") { return true; }
       
@@ -29,7 +29,7 @@ namespace Botman.Patches
         return true;
       }
 
-      var item = new BlockChangeInfo(_block, new BlockValue(0u), true, false);
+      var item = new BlockChangeInfo(_blockPos, new BlockValue(0u), true, false);
       var list = new List<BlockChangeInfo>();
       list.Add(item);
       GameManager.Instance.SetBlocksRPC(list);

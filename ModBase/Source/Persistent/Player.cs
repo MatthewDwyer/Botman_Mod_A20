@@ -6,7 +6,7 @@ namespace Botman
   [Serializable]
   public class Player
   {
-    private readonly PlatformUserIdentifierAbs platformId;
+    private readonly string id;
     [OptionalField]
     private string chatColor;
     private bool chatName;
@@ -30,13 +30,13 @@ namespace Botman
 
     private DateTime invitedate;
 
-    public Player(PlatformUserIdentifierAbs platformId)
+    public Player(string id)
     {
-      this.platformId = platformId;
+      this.id = id;
 
     }
 
-    public PlatformUserIdentifierAbs PlatformID => platformId;
+    public string ID => id;
 
     public string ChatColor
     {

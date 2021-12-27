@@ -31,15 +31,15 @@ namespace Botman.Commands
         return;
       }
 
-      var steamId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
-      if (steamId == null)
+      var id = PersistentContainer.Instance.Players.GetId(_params[0]);
+      if (id == null)
       {
         SdtdConsole.Instance.Output("Player name, entity id or steam id not found.");
 
         return;
       }
 
-      var persistentPlayer = PersistentContainer.Instance.Players[steamId, false];
+      var persistentPlayer = PersistentContainer.Instance.Players[id, false];
       if (persistentPlayer == null)
       {
         SdtdConsole.Instance.Output("Player not found.");

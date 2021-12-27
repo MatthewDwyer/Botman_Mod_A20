@@ -24,8 +24,8 @@ namespace Botman.Commands
         return;
       }
 
-            PlatformUserIdentifierAbs steamId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
-      if (steamId == null)
+            string id = PersistentContainer.Instance.Players.GetId(_params[0]);
+      if (id == null)
       {
         SdtdConsole.Instance.Output($"~Botman~ Could not locate player {_params[0]}");
 
@@ -33,9 +33,9 @@ namespace Botman.Commands
       }
 
       var wipe = new InventoryWipe();
-      wipe.Execute(steamId.CombinedString);
+      wipe.Execute(id);
 
-      SdtdConsole.Instance.Output($"~Botman~ Inventory wipe complete on {PersistentContainer.Instance.Players[steamId, true].PlayerName}/{steamId} ");
+      SdtdConsole.Instance.Output($"~Botman~ Inventory wipe complete on {PersistentContainer.Instance.Players[id, true].PlayerName}/{id} ");
     }
   }
 

@@ -167,13 +167,13 @@ namespace Botman.Commands
 
           case 2:
             {
-              PlatformUserIdentifierAbs steamId = PersistentContainer.Instance.Players.GetSteamId(_params[1]);
-              if (steamId != null)
+              string id = PersistentContainer.Instance.Players.GetId(_params[1]);
+              if (id != null)
               {
-                var cInfo = ConsoleHelper.ParseParamIdOrName(steamId.CombinedString, true, false);
+                var cInfo = ConsoleHelper.ParseParamIdOrName(id, true, false);
                 if (cInfo == null)
                 {
-                  SdtdConsole.Instance.Output($"Player with steam id {steamId} is not online");
+                  SdtdConsole.Instance.Output($"Player with id {id} is not online");
 
                   return;
                 }
@@ -289,13 +289,13 @@ namespace Botman.Commands
 
           case 2:
             {
-              PlatformUserIdentifierAbs steamId = PersistentContainer.Instance.Players.GetSteamId(_params[1]);
-              if (steamId != null)
+              string id = PersistentContainer.Instance.Players.GetId(_params[1]);
+              if (id != null)
               {
-                var cInfo = ConsoleHelper.ParseParamIdOrName(steamId.CombinedString, true, false);
+                var cInfo = ConsoleHelper.ParseParamIdOrName(id, true, false);
                 if (cInfo == null)
                 {
-                  SdtdConsole.Instance.Output($"Player with steam id {steamId} is not online");
+                  SdtdConsole.Instance.Output($"Player with steam id {id} is not online");
 
                   return;
                 }

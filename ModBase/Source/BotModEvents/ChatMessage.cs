@@ -21,104 +21,104 @@ namespace Botman.Source.BotModEvents
         {
           ReturnCommandPM(_clientInfo, _message);
         }
-        var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId, false];
+        var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId.CombinedString, false];
         Log.Out("Player Command: '" + p.PlayerName + "' " + _message);
 
-        //if (BMClans.Enabled)
-        //{
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan create "))
-        //  {
-        //    BMClans.AddClan(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan color "))
-        //  {
-        //    BMClans.ChangeClanTagColorFromChat(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan public"))
-        //  {
-        //    BMClans.ToggleClanPublic(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan private"))
-        //  {
-        //    BMClans.ToggleClanPrivate(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan list"))
-        //  {
-        //    BMClans.ListClans(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan delete"))
-        //  {
-        //    BMClans.RemoveClan(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan commands"))
-        //  {
-        //    BMClans.ListClanCommands(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan promote "))
-        //  {
-        //    BMClans.PromoteMember(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan demote "))
-        //  {
-        //    BMClans.DemoteMember(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan invite "))
-        //  {
-        //    BMClans.InviteToClan(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan resign to "))
-        //  {
-        //    BMClans.ResignClanToMember(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan kick "))
-        //  {
-        //    BMClans.KickFromClan(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan leave"))
-        //  {
-        //    BMClans.LeaveClan(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan accept invite"))
-        //  {
-        //    BMClans.AcceptInvite(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan decline invite"))
-        //  {
-        //    BMClans.DeclineInvite(_clientInfo);
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan join "))
-        //  {
-        //    BMClans.InviteSelfToClan(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().StartsWith($"{CommandPrefix}clan name "))
-        //  {
-        //    BMClans.ChangeClanName(_clientInfo, _message.ToLower());
-        //    return false;
-        //  }
-        //  if (_message.ToLower().Equals($"{CommandPrefix}clan members"))
-        //  {
-        //    BMClans.ListClanMembers(_clientInfo);
-        //    return false;
-        //  }
-        //}
+        if (BMClans.Enabled)
+        {
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan create "))
+            {
+                BMClans.AddClan(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan color "))
+            {
+                BMClans.ChangeClanTagColorFromChat(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan public"))
+            {
+                BMClans.ToggleClanPublic(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan private"))
+            {
+                BMClans.ToggleClanPrivate(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan list"))
+            {
+                BMClans.ListClans(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan delete"))
+            {
+                BMClans.RemoveClan(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan commands"))
+            {
+                BMClans.ListClanCommands(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan promote "))
+            {
+                BMClans.PromoteMember(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan demote "))
+            {
+                BMClans.DemoteMember(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan invite "))
+            {
+                BMClans.InviteToClan(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan resign to "))
+            {
+                BMClans.ResignClanToMember(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan kick "))
+            {
+                BMClans.KickFromClan(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan leave"))
+            {
+                BMClans.LeaveClan(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan accept invite"))
+            {
+                BMClans.AcceptInvite(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan decline invite"))
+            {
+                BMClans.DeclineInvite(_clientInfo);
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan join "))
+            {
+                BMClans.InviteSelfToClan(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().StartsWith($"{CommandPrefix}clan name "))
+            {
+                BMClans.ChangeClanName(_clientInfo, _message.ToLower());
+                return false;
+            }
+            if (_message.ToLower().Equals($"{CommandPrefix}clan members"))
+            {
+                BMClans.ListClanMembers(_clientInfo);
+                return false;
+            }
+        }
 
-        if (Hide)
+                if (Hide)
         {
           return false;
         }
@@ -129,7 +129,7 @@ namespace Botman.Source.BotModEvents
       {
         case EChatType.Global:
           {
-            var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId, false];
+            var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId.CombinedString, false];
             if (p != null)
             {
               EntityPlayer _player = GameManager.Instance.World.Players.dict[_clientInfo.entityId];
@@ -207,7 +207,7 @@ namespace Botman.Source.BotModEvents
 
         case EChatType.Friends:
           {
-            var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId, false];
+            var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId.CombinedString, false];
             if (p != null)
             {
               Log.Out("Friends Chat: '" + p.PlayerName + "' " + _message);
@@ -218,7 +218,7 @@ namespace Botman.Source.BotModEvents
 
         case EChatType.Party:
           {
-            var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId, false];
+            var p = PersistentContainer.Instance.Players[_clientInfo.CrossplatformId.CombinedString, false];
             if (p != null)
             {
               Log.Out("Party Chat: '" + p.PlayerName + "' " + _message);
@@ -251,7 +251,7 @@ namespace Botman.Source.BotModEvents
       //todo: not used?
       var botName = $"(PM) {Config.BotName}[FFFFFF]";
 
-      var persistentPlayer = PersistentContainer.Instance.Players[clientInfo.CrossplatformId, false];
+      var persistentPlayer = PersistentContainer.Instance.Players[clientInfo.CrossplatformId.CombinedString, false];
 
       clientInfo.SendPackage(NetPackageManager.GetPackage<NetPackageChat>()
         .Setup(EChatType.Whisper, _senderEntityId: -1, $"[{PrivateTextColor}]{message}[-]", persistentPlayer?.PlayerName + "[-]", _localizeMain: false, _recipientEntityIds: null));

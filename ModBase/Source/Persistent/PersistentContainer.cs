@@ -7,58 +7,58 @@ namespace Botman
   [Serializable]
   public class PersistentContainer
   {
-    private static readonly char Dsc = Path.DirectorySeparatorChar;
-    public static string Filepath = $"{API.BotmanPath}{Dsc}Botman.bin";
-    private Players players;
-    private int undoSize;
-    private int serverScore;
-    private DateTime lastReset;
-    private DateTime lastAreaReset;
-    private DateTime lastPrefabReset;
-    private DateTime serverScoreCurrentWeek;
-    private bool hideChatCommands;
-    private string hideChatCommandsPrefix;
+        private static readonly char Dsc = Path.DirectorySeparatorChar;
+        public static string Filepath = $"{API.BotmanPath}{Dsc}Botman.bin";
+        private Players players;
+        private int undoSize;
+        private int serverScore;
+        private DateTime lastReset;
+        private DateTime lastAreaReset;
+        private DateTime lastPrefabReset;
+        private DateTime serverScoreCurrentWeek;
+        private bool hideChatCommands;
+        private string hideChatCommandsPrefix;
 
-    private static PersistentContainer instance;
+        private static PersistentContainer instance;
 
-    public Players Players => players ?? (players = new Players());
+        public Players Players => players ?? (players = new Players());
 
-    public static PersistentContainer Instance => instance ?? (instance = new PersistentContainer());
+        public static PersistentContainer Instance => instance ?? (instance = new PersistentContainer());
 
-    private PersistentContainer() { }
+        private PersistentContainer() { }
 
-    public void Save()
-    {
-      Stream stream = File.Open(Filepath, FileMode.Create);
-      var binaryFormatter = new BinaryFormatter();
-      binaryFormatter.Serialize(stream, this);
-      stream.Close();
-    }
+        public void Save()
+        {
+            using (Stream stream = File.Open(Filepath, FileMode.Create, FileAccess.ReadWrite))
+            {
+                var binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(stream, this);
+            }
+        }
 
-    public static bool Load()
-    {
-      if (!File.Exists(Filepath))
-      {
-        return false;
-      }
-      try
-      {
-        Stream stream = File.Open(Filepath, FileMode.Open);
-        var binaryFormatter = new BinaryFormatter();
-        var persistentContainer = (PersistentContainer)binaryFormatter.Deserialize(stream);
-        stream.Close();
-        instance = persistentContainer;
-
-        return true;
-      }
-      catch (Exception ex)
-      {
-        Log.Error("Exception in PersistentContainer.Load");
-        Log.Exception(ex);
-      }
-
-      return false;
-    }
+        public static bool Load()
+        {
+            if (!File.Exists(Filepath))
+            {
+              return false;
+            }
+            try
+            {
+                using (Stream stream = File.Open(Filepath, FileMode.Open, FileAccess.ReadWrite))
+                {
+                    var binaryFormatter = new BinaryFormatter();
+                    var persistentContainer = (PersistentContainer)binaryFormatter.Deserialize(stream);
+                    instance = persistentContainer;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("Exception in PersistentContainer.Load");
+                Log.Exception(ex);
+            }
+            return false;
+        }
 
     public int UndoSize
     {

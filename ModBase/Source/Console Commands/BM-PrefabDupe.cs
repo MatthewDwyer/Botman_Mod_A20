@@ -49,7 +49,6 @@ namespace Botman.Commands
       var z = int.MinValue;
 
       var rot = int.MinValue;
-      var cInfo = _senderInfo.RemoteClientInfo;
 
       if (_params.Count != 10 && _params.Count != 1 && _params.Count != 4)
       {
@@ -63,7 +62,7 @@ namespace Botman.Commands
       {
         if (_params[0].Equals("p1", StringComparison.InvariantCultureIgnoreCase))
         {
-          //var cInfo = _senderInfo.RemoteClientInfo;
+          var cInfo = _senderInfo.RemoteClientInfo;
           if (cInfo == null)
           {
             SdtdConsole.Instance.Output("Unable to get your position");
@@ -92,7 +91,7 @@ namespace Botman.Commands
 
         if (_params[0].Equals("p2", StringComparison.InvariantCultureIgnoreCase))
         {
-          //var cInfo = _senderInfo.RemoteClientInfo;
+          var cInfo = _senderInfo.RemoteClientInfo;
           if (cInfo == null)
           {
             SdtdConsole.Instance.Output("Unable to get your position");
@@ -177,7 +176,7 @@ namespace Botman.Commands
       }
       else if (_params.Count == 4)
       {
-        //var cInfo = _senderInfo.RemoteClientInfo;
+        var cInfo = _senderInfo.RemoteClientInfo;
         if (cInfo == null)
         {
           SdtdConsole.Instance.Output("Unable to get your position");
@@ -346,7 +345,7 @@ namespace Botman.Commands
 
       Thread.Sleep(50);
 
-      BMReload.ReloadForClients(chunks, cInfo.CrossplatformId);
+      BMReload.ReloadForClients(chunks);
 
       var stabCalc = new StabilityCalculator();
       stabCalc.Init(GameManager.Instance.World);

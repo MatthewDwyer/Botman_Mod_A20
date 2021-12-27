@@ -10,17 +10,13 @@ namespace Botman.Source.BotModEvents
 
             if (!APICommon.GetOnlinePlayer(_cInfo, out var persistentPlayer, out var entityPlayer)) { return; }
 
-            Log.Out($"~Botman~ PlayerDisconnected");
-
             int adminLevel = GameManager.Instance.adminTools.GetUserPermissionLevel(_cInfo);
-
-            Log.Out($"~Botman~ PlayerDisconnected");
 
             if (AntiCheat.Spectators.Count > 0 && AntiCheat.Spectators.Contains(_cInfo.CrossplatformId.CombinedString))
       {
         AntiCheat.Spectators.Remove(_cInfo.CrossplatformId.CombinedString);
       }
-            Log.Out($"~Botman~ PlayerDisconnected");
+
             if (AntiCheat.GodMode.Count > 0 && AntiCheat.GodMode.Contains(_cInfo.CrossplatformId.CombinedString))
       {
                 Log.Out($"~Botman~");

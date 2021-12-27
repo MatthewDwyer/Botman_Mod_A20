@@ -34,7 +34,6 @@ namespace Botman.Commands
       var y = int.MinValue;
       var z = int.MinValue;
       var rot = int.MinValue;
-      var cInfo = _senderInfo.RemoteClientInfo;
 
       if (_params.Count == 5)
       {
@@ -64,7 +63,7 @@ namespace Botman.Commands
       }
       else if (_params.Count == 1 || _params.Count == 2 || _params.Count == 3)
       {
-        //var cInfo = _senderInfo.RemoteClientInfo;
+        var cInfo = _senderInfo.RemoteClientInfo;
         if (cInfo == null)
         {
           SdtdConsole.Instance.Output("This command can be only sent by player in game.");
@@ -173,7 +172,7 @@ namespace Botman.Commands
 
       Thread.Sleep(50);
 
-      BMReload.ReloadForClients(chunks, cInfo.CrossplatformId);
+      BMReload.ReloadForClients(chunks);
 
       var stabCalc = new StabilityCalculator();
       stabCalc.Init(GameManager.Instance.World);

@@ -41,37 +41,37 @@ namespace Botman.Commands
         }
       }
 
-      PlatformUserIdentifierAbs steamId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
-      if (steamId == null)
+      string id = PersistentContainer.Instance.Players.GetId(_params[0]);
+      if (id == null)
       {
         SdtdConsole.Instance.Output($"Can not reset Id: Invalid Id {_params[0]}");
 
         return;
       }
 
-      ResetPlayer(steamId, markForReturn);
+      ResetPlayer(id, markForReturn);
     }
 
-    private static void ResetPlayer(PlatformUserIdentifierAbs steamId, bool markForReturn)
+    private static void ResetPlayer(string id, bool markForReturn)
     {
       // Note: If world is still loading this wont give the correct location as GameWorld and GameName prefs wont be set
       var saveGamePath = GameIO.GetSaveGameDir();
 
-      var playerMapPath = $"{saveGamePath}/Player/{steamId}.map";
-      var playerTtpPath = $"{saveGamePath}/Player/{steamId}.ttp";
+      var playerMapPath = $"{saveGamePath}/Player/{id}.map";
+      var playerTtpPath = $"{saveGamePath}/Player/{id}.ttp";
 
       Log.Out($"~Botman Notice~ Searching for {playerMapPath}");
       Log.Out($"~Botman Notice~ Searching for {playerTtpPath}");
 
-      var persistentPlayer = PersistentContainer.Instance.Players[steamId, false];
+      var persistentPlayer = PersistentContainer.Instance.Players[id, false];
       if (persistentPlayer == null)
       {
-        SdtdConsole.Instance.Output($"Player file {steamId}.ttp does not exist");
+        SdtdConsole.Instance.Output($"Player file {id}.ttp does not exist");
 
         return;
       }
 
-      var clientInfo = ConsoleHelper.ParseParamIdOrName(steamId.CombinedString, true, false);
+      var clientInfo = ConsoleHelper.ParseParamIdOrName(id, true, false);
       if (clientInfo == null)
       {
         if (markForReturn)
@@ -81,7 +81,7 @@ namespace Botman.Commands
           PersistentContainer.Instance.Save();
         }
 
-        DeleteFiles(steamId.CombinedString, playerMapPath, playerTtpPath);
+        DeleteFiles(id, playerMapPath, playerTtpPath);
 
         SdtdConsole.Instance.Output($"{persistentPlayer.PlayerName} is offline but their profile has been reset.");
 
@@ -105,9 +105,9 @@ namespace Botman.Commands
         PersistentContainer.Instance.Save();
       }
 
-      SdtdConsole.Instance.ExecuteSync($"kick {steamId} \"Your player profile has been reset by an admin\"", null);
+      SdtdConsole.Instance.ExecuteSync($"kick {id} \"Your player profile has been reset by an admin\"", null);
 
-      DeleteFiles(steamId.CombinedString, playerMapPath, playerTtpPath);
+      DeleteFiles(id, playerMapPath, playerTtpPath);
 
       SdtdConsole.Instance.Output($"You have reset the profile for {persistentPlayer.PlayerName}");
     }

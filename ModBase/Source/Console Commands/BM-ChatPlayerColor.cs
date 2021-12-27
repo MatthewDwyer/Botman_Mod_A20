@@ -11,7 +11,7 @@ namespace Botman.Commands
     public override string GetHelp() =>
       "Change the players chat and/or response color.\n" +
       "Usage:\n" +
-      "1. bm-chatplayercolor <steam id/player name/entity id> <color> <nameOnly>\n" +
+      "1. bm-chatplayercolor <id/player name/entity id> <color> <nameOnly>\n" +
       "the <color> must be a 6 hex characters. Example: FF00FF\n" +
       "the <nameOnly> must be a 1 to color only name and 0 to color all text\n" +
       "the default chat color is ffffff\n";
@@ -26,18 +26,18 @@ namespace Botman.Commands
         return;
       }
 
-      PlatformUserIdentifierAbs platformId = PersistentContainer.Instance.Players.GetSteamId(_params[0]);
-      if (platformId == null)
+      string id = PersistentContainer.Instance.Players.GetId(_params[0]);
+      if (id == null)
       {
-        SdtdConsole.Instance.Output($"Player name, entity id or steam id not found: {_params[0]}");
+        SdtdConsole.Instance.Output($"Player name, entity id or EOS id not found: {_params[0]}");
 
         return;
       }
 
-      var persistentPlayer = PersistentContainer.Instance.Players[platformId, false];
+      var persistentPlayer = PersistentContainer.Instance.Players[id, false];
       if (persistentPlayer == null)
       {
-        SdtdConsole.Instance.Output($"Persistent player not found for steam id: {platformId}");
+        SdtdConsole.Instance.Output($"Persistent player not found for EOS id: {id}");
 
         return;
       }
