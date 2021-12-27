@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<xml>
+  <ModInfo>
+    <Name value="Botman"/>
+    <Description value="Botman API Mod is based off coppi's 3.6, BCManager and our own and has combined n tweaked many of the commands into the API."/>
+    <Author value="Coppi/Ragnarok/HigHope/StompyNZ/Smegzor"/>
+    <Version value="2.3.17"/>
+    <Website value="https://botman.nz/download"/>
+  </ModInfo>
+</xml>

@@ -1,0 +1,209 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E1B8EDB-D954-4CBB-9D93-2A3981AD383D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Botman</RootNamespace>
+    <AssemblyName>Botman</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\7dtd-binaries\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\7dtd-binaries\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Assembly-CSharp-firstpass, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\7dtd-binaries\Assembly-CSharp-firstpass.dll</HintPath>
+    </Reference>
+    <Reference Include="LitJson">
+      <HintPath>..\7dtd-binaries\LitJson.dll</HintPath>
+    </Reference>
+    <Reference Include="LogLibrary">
+      <HintPath>..\7dtd-binaries\LogLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UnityEngine">
+      <HintPath>..\..\Allocs Mod Source 369\7dtd-binaries\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>..\7dtd-binaries\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Source\API.cs" />
+    <Compile Include="Source\BotModEvents\ChatMessage.cs" />
+    <Compile Include="Source\BotModEvents\APICommon.cs" />
+    <Compile Include="Source\BotModEvents\GameAwake.cs" />
+    <Compile Include="Source\BotModEvents\GameMessage.cs" />
+    <Compile Include="Source\BotModEvents\GameShutdown.cs" />
+    <Compile Include="Source\BotModEvents\GameStartDone.cs" />
+    <Compile Include="Source\BotModEvents\GameUpdate.cs" />
+    <Compile Include="Source\BotModEvents\PlayerDisconnected.cs" />
+    <Compile Include="Source\BotModEvents\PlayerLogin.cs" />
+    <Compile Include="Source\BotModEvents\PlayerSpawnedInWorld.cs" />
+    <Compile Include="Source\BotModEvents\PlayerSpawning.cs" />
+    <Compile Include="Source\BotModEvents\SavePlayerData.cs" />
+    <Compile Include="Source\Config\Config.cs" />
+    <Compile Include="Source\Console Commands\BM-ChunkReset.cs" />
+    <Compile Include="Source\Console Commands\BM-ClearInventory.cs" />
+    <Compile Include="Source\Console Commands\BM-ExemptList.cs" />
+    <Compile Include="Source\Console Commands\BM-ReadConfigV2.cs" />
+    <Compile Include="Source\Console Commands\BM-LevelAchievements.cs" />
+    <Compile Include="Source\Console Commands\BM-LevelPrefix.cs" />
+    <Compile Include="Source\Console Commands\BM-ReadConfig.cs" />
+    <Compile Include="Source\Console Commands\BM-VehicleFileDelete.cs" />
+    <Compile Include="Source\Console Commands\BM-AntiCheatCmd.cs" />
+    <Compile Include="Source\Console Commands\BM-ZombieFreeTime.cs" />
+    <Compile Include="Source\Console Commands\BM-Buffs.cs" />
+    <Compile Include="Source\Console Commands\CmdHelpers.cs" />
+    <Compile Include="Source\Console Commands\BMCmdAbstract.cs" />
+    <Compile Include="Source\Console Commands\BM-FallingBlocks.cs" />
+    <Compile Include="Source\Console Commands\BM-PrefabDupe.cs" />
+    <Compile Include="Source\Console Commands\BM-GiveQuest.cs" />
+    <Compile Include="Source\Console Commands\BM-ListEntities.cs" />
+    <Compile Include="Source\Console Commands\BM-Remove.cs" />
+    <Compile Include="Source\Console Commands\BM-RepBlock.cs" />
+    <Compile Include="Source\Console Commands\BM-GetSkills.cs" />
+    <Compile Include="Source\Console Commands\BM-PRender.cs" />
+    <Compile Include="Source\Console Commands\BM-BlockScan.cs" />
+    <Compile Include="Source\Console Commands\BM-SetCustomMessage.cs" />
+    <Compile Include="Source\Console Commands\BM-Sanctuaries.cs" />
+    <Compile Include="Source\Console Commands\BM-SetChatPrefix.cs" />
+    <Compile Include="Source\Console Commands\BM-CustomMessages.cs" />
+    <Compile Include="Source\Console Commands\BM-Uptime.cs" />
+    <Compile Include="Source\Harmony\AddChilds.cs" />
+    <Compile Include="Source\WebMapControllers\BM-MapEditor.cs" />
+    <Compile Include="Source\Console Commands\BM-PlayerInfo.cs" />
+    <Compile Include="Source\Console Commands\BM-ResetRegions.cs" />
+    <Compile Include="Source\Console Commands\BM-RemoveQuest.cs" />
+    <Compile Include="Source\Console Commands\BM-ResetAllPrefabs.cs" />
+    <Compile Include="Source\Console Commands\BM-ResetPrefab.cs" />
+    <Compile Include="Source\Console Commands\BM-Settings.cs" />
+    <Compile Include="Source\Console Commands\BM-Milestones.cs" />
+    <Compile Include="Source\Console Commands\New Commands\BM-LCBPrefabRule.cs" />
+    <Compile Include="Source\Console Commands\New Commands\BM-RemoveResetArea.cs" />
+    <Compile Include="Source\Console Commands\New Commands\BM-AddResetArea.cs" />
+    <Compile Include="Source\Harmony\BMBuffMonitor.cs" />
+    <Compile Include="Source\Harmony\BMOpenTileEntity.cs" />
+    <Compile Include="Source\Harmony\BMConsoleMonitor.cs" />
+    <Compile Include="Source\Harmony\BMHarmonyMain.cs" />
+    <Compile Include="Source\Harmony\BMSpawnEntityAt.cs" />
+    <Compile Include="Source\Harmony\HarmonyFallingBlocks.cs" />
+    <Compile Include="Source\Harmony\HarmonyPlaceLCB.cs" />
+    <Compile Include="Source\Harmony\HarmonyServerShutdown.cs" />
+    <Compile Include="Source\Utilities\AntiCheat.cs" />
+    <Compile Include="Source\Utilities\Delegates\EntityLoadedDelegate.cs" />
+    <Compile Include="Source\Utilities\EntityWatch.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Console Commands\AsyncCommands.cs" />
+    <Compile Include="Source\Console Commands\BM-AddItemLoot.cs" />
+    <Compile Include="Source\Console Commands\BM-Change.cs" />
+    <Compile Include="Source\Console Commands\BM-ChatPlayerColor.cs" />
+    <Compile Include="Source\Console Commands\BM-CheckLoot.cs" />
+    <Compile Include="Source\Console Commands\BM-Give.cs" />
+    <Compile Include="Source\Console Commands\BM-Help.cs" />
+    <Compile Include="Source\Console Commands\BM-ChatCommands.cs" />
+    <Compile Include="Source\Console Commands\BM-ListPlayerBed.cs" />
+    <Compile Include="Source\Console Commands\BM-MutePlayerChat.cs" />
+    <Compile Include="Source\Console Commands\BM-OverrideChatName.cs" />
+    <Compile Include="Source\Console Commands\BM-PBLock.cs" />
+    <Compile Include="Source\Console Commands\BM-PlayerChatMaxLength.cs" />
+    <Compile Include="Source\Console Commands\BM-PlayerGroundDistance.cs" />
+    <Compile Include="Source\Console Commands\BM-PlayerUnderground.cs" />
+    <Compile Include="Source\Console Commands\BM-PUndo.cs" />
+    <Compile Include="Source\Console Commands\BM-Safe.cs" />
+    <Compile Include="Source\Console Commands\BM-Say.cs" />
+    <Compile Include="Source\Console Commands\BM-Sayprivate.cs" />
+    <Compile Include="Source\Console Commands\BM-SetUndoSize.cs" />
+    <Compile Include="Source\Console Commands\BM-SpawnHorde.cs" />
+    <Compile Include="Source\Console Commands\BM-TeleportPlayerHome.cs" />
+    <Compile Include="Source\Console Commands\BM-UnlockAll.cs" />
+    <Compile Include="Source\Console Commands\BM-ZombieAnnouncer.cs" />
+    <Compile Include="Source\Console Commands\BM-GetOwner.cs" />
+    <Compile Include="Source\Console Commands\BM-GiveAt.cs" />
+    <Compile Include="Source\Console Commands\BM-GiveXP.cs" />
+    <Compile Include="Source\Console Commands\BM-RemoveItem.cs" />
+    <Compile Include="Source\Console Commands\BM-ResetPlayerProfile.cs" />
+    <Compile Include="Source\Console Commands\BM-SetOwner.cs" />
+    <Compile Include="Source\Persistent\PersistentContainer.cs" />
+    <Compile Include="Source\Persistent\Player.cs" />
+    <Compile Include="Source\Persistent\Players.cs" />
+    <Compile Include="Source\Utilities\INWORK\Obsolete-DefaultMapJS.cs" />
+    <Compile Include="Source\Utilities\LCBPlacement.cs" />
+    <Compile Include="Source\Utilities\LevelSystem.cs" />
+    <Compile Include="Source\Utilities\PrefabReset.cs" />
+    <Compile Include="Source\Utilities\Reload.cs" />
+    <Compile Include="Source\Utilities\SendMessage.cs" />
+    <Compile Include="Source\Utilities\Vectors.cs" />
+    <Compile Include="Source\WebMapControllers\BM-WebmapTracePrefabs.cs" />
+    <Compile Include="Source\WebMapControllers\BM-WebmapTraceResetArea.cs" />
+    <Compile Include="Source\WebMapControllers\BM-WebmapTraceResetRegions.cs" />
+    <Compile Include="Source\WebMapControllers\Bm-WebmapTraceTraders.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ModInfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Source\Utilities\INWORK\Obsolete-JavaScript1.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Source\JSON\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+rmdir "$(ProjectDir)Mods\Botman" /s /q
+mkdir "$(ProjectDir)Mods\Botman"
+
+copy "$(ProjectDir)$(OutDir)Botman.dll" "$(ProjectDir)Mods\Botman\Botman.dll"
+copy "$(ProjectDir)$(OutDir)ModInfo.xml" "$(ProjectDir)Mods\Botman\ModInfo.xml"
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>
