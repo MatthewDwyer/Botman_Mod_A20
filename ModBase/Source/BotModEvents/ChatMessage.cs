@@ -152,31 +152,31 @@ namespace Botman.Source.BotModEvents
               var textcolor = "";
               var altered = false;
               playername = p.PlayerName;
-              //if (BMClans.Enabled)
-              //{
-              //  if (p.ChatColor != null && p.ChatColor.ToLower() != "ffffff")
-              //  {
-              //    namecolor = p.ChatColor;
-              //    coloredchat = true;
-              //    altered = true;
-              //  }
-              //  if (!p.ChatName)
-              //  {
-              //    textcolor = p.ChatColor;
-              //    altered = true;
+            if (BMClans.Enabled)
+            {
+                if (p.ChatColor != null && p.ChatColor.ToLower() != "ffffff")
+                {
+                    namecolor = p.ChatColor;
+                    coloredchat = true;
+                    altered = true;
+                }
+                if (!p.ChatName)
+                {
+                    textcolor = p.ChatColor;
+                    altered = true;
 
-              //  }
-              //  if (p.ClanName != null)
-              //  {
-              //    altered = true;
-              //    clantag = p.ClanName;
-              //    if (p.ClanTagColor != null)
-              //    {
-              //      clantagcolor = "[" + p.ClanTagColor + "]";
-              //    }
-              //  }
-              //}
-              if (p.ChatColor != null && p.ChatColor.ToLower() != "ffffff")
+                }
+                if (p.ClanName != null)
+                {
+                    altered = true;
+                    clantag = p.ClanName;
+                    if (p.ClanTagColor != null)
+                    {
+                        clantagcolor = "[" + p.ClanTagColor + "]";
+                    }
+                }
+            }
+            if (p.ChatColor != null && p.ChatColor.ToLower() != "ffffff")
               {
                 namecolor = p.ChatColor;
                 altered = true;

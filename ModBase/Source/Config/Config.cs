@@ -9,8 +9,8 @@ namespace Botman
 {
   internal class Config
   {
-    public static string BotName = "[F63B3B]Botman";
-    public static string Version = "2.3.17";
+    public static string BotName = "Botman";
+    public static string Version = "2.3.22";
     public static bool VersionMatches;
     public static bool MapUpdateRequired;
 

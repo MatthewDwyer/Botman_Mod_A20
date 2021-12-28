@@ -160,13 +160,16 @@ namespace Botman.Commands
         return;
       }
 
-      //todo: overwrite warning with option to override
+    //todo: overwrite warning with option to override
 
-      //todo: test using Mods/Botman/Prefabs as the folder location for import/export
-      var loc = new PathAbstractions.AbstractedLocation(PathAbstractions.EAbstractedLocationType.UserDataPath,
-        fileName, Path.Combine(GamePrefs.GetString(EnumGamePrefs.UserDataFolder), "LocalPrefabs", $"{fileName}.tts"));
+    // public AbstractedLocation(EAbstractedLocationType _type, string _name, string _fullPath, string _relativePath, Mod _containingMod = null);
 
-      SdtdConsole.Instance.Output($"Attempting to save prefab to {loc.FullPath}");
+    //todo: test using Mods/Botman/Prefabs as the folder location for import/export
+    var loc = new PathAbstractions.AbstractedLocation(PathAbstractions.EAbstractedLocationType.UserDataPath, fileName, Path.Combine(GamePrefs.GetString(EnumGamePrefs.UserDataFolder), "LocalPrefabs", $"{fileName}.tts"), "");
+
+    //var loc = new PathAbstractions.AbstractedLocation(PathAbstractions.EAbstractedLocationType.UserDataPath, fileName, Path.Combine(GamePrefs.GetString(EnumGamePrefs.UserDataFolder), "LocalPrefabs", $"{fileName}.tts"));
+
+    SdtdConsole.Instance.Output($"Attempting to save prefab to {loc.FullPath}");
 
       var prefab = new Prefab { location = loc };
 

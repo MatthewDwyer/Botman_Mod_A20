@@ -44,30 +44,27 @@ namespace Botman.Commands
       }
 
       {
-        string steamId = null;
+        PlatformUserIdentifierAbs platformId = null;
 
         var clientInfo = ConsoleHelper.ParseParamIdOrName(_params[0]);
         if (clientInfo != null)
         {
-          steamId = clientInfo.playerId;
+           platformId = clientInfo.CrossplatformId;
         }
 
-        if (steamId == null)
-        {
-          if (ConsoleHelper.ParseParamSteamIdValid(_params[0]))
-          {
-            steamId = _params[0];
-          }
-        }
+        //if (platformId == null)
+        //{
+        //   platformId = _params[0];
+        //}
 
-        if (steamId == null)
+        if (platformId == null)
         {
           SdtdConsole.Instance.Output("Player name, entity id or steam id not found.");
 
           return;
         }
 
-        PrintFriendsOfPlayer(steamId);
+        PrintFriendsOfPlayer(platformId);
       }
     }
 
@@ -84,25 +81,25 @@ namespace Botman.Commands
 
       var friends = persistentPlayer.ACL != null
         ? string.Join(",", persistentPlayer.ACL
-          .Where(f => !string.IsNullOrEmpty(f))
-          .Select(friendSteamId => $"{friendSteamId}/{PersistentContainer.Instance.Players[friendSteamId, false]?.PlayerName ?? ""}"))
+          .Where(f => !string.IsNullOrEmpty(f.CombinedString))
+          .Select(friendSteamId => $"{friendSteamId}/{PersistentContainer.Instance.Players[friendSteamId.CombinedString, false]?.PlayerName ?? ""}"))
         : string.Empty;
 
-      SdtdConsole.Instance.Output($"Friends of id={persistentPlayer.PlayerId}/{PersistentContainer.Instance.Players[persistentPlayer.PlayerId, false]?.PlayerName ?? ""} Friends={friends}");
+      SdtdConsole.Instance.Output($"Friends of id={persistentPlayer.UserIdentifier.CombinedString}/{PersistentContainer.Instance.Players[persistentPlayer.UserIdentifier.CombinedString, false]?.PlayerName ?? ""} Friends={friends}");
     }
 
 
-    private static void PrintFriendsOfPlayer(string steamId)
+    private static void PrintFriendsOfPlayer(PlatformUserIdentifierAbs platformId)
     {
-      var persistentPlayer = GameManager.Instance.persistentPlayers.GetPlayerData(steamId);
+      var persistentPlayer = GameManager.Instance.persistentPlayers.GetPlayerData(platformId);
 
       var friends = persistentPlayer?.ACL != null
         ? string.Join(",", persistentPlayer.ACL
-          .Where(f => !string.IsNullOrEmpty(f))
-          .Select(friendSteamId => $"{friendSteamId}/{PersistentContainer.Instance.Players[friendSteamId, false]?.PlayerName ?? ""}"))
+          .Where(f => !string.IsNullOrEmpty(f.CombinedString))
+          .Select(friendSteamId => $"{friendSteamId}/{PersistentContainer.Instance.Players[friendSteamId.CombinedString, false]?.PlayerName ?? ""}"))
         : string.Empty;
 
-      SdtdConsole.Instance.Output($"Friends of id={steamId}/{PersistentContainer.Instance.Players[steamId, false]?.PlayerName ?? ""} Friends={friends}");
+      SdtdConsole.Instance.Output($"Friends of id={platformId}/{PersistentContainer.Instance.Players[platformId.CombinedString, false]?.PlayerName ?? ""} Friends={friends}");
     }
   }
 }
