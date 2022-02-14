@@ -16,19 +16,17 @@ namespace Botman.Patches
         return;
       }
 
-      if (__instance == null)
+      if (__instance == null || __instance.parent == null)
       {
         return;
       }
 
       var _cInfo = ConnectionManager.Instance.Clients.ForEntityId(__instance.parent.entityId);
-      
-      if (_cInfo == null)
-      {
-        return;
-      }
 
-      var _player = GameManager.Instance.World.Players.dict[_cInfo.entityId];
+      if (_cInfo == null)
+      { return; }
+
+       var _player = GameManager.Instance.World.Players.dict[_cInfo.entityId];
       
       if (_player == null || !_player.IsSpawned() || !_player.IsAlive())
       {
@@ -38,7 +36,6 @@ namespace Botman.Patches
       try
       {
         var adminLevel = GameManager.Instance.adminTools.GetUserPermissionLevel(_cInfo);
-
         if (GameManager.Instance.adminTools.IsAdmin(_cInfo)) { return; }
 
         if (_player.IsSpectator)
@@ -85,7 +82,7 @@ namespace Botman.Patches
           }
         }
       }
-      catch
+      catch (Exception)
       {
 
       }

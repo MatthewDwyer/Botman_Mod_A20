@@ -64,8 +64,11 @@ namespace Botman
                 lcb.Key.x <= (prefab.boundingBoxPosition.x + prefab.boundingBoxSize.x) + lcbReach &&
                 lcb.Key.z <= prefab.boundingBoxPosition.z + prefab.boundingBoxSize.z + lcbReach
           select lcb.Key);
-        ResetChunks(prefab.boundingBoxPosition.x, prefab.boundingBoxPosition.z, prefab.boundingBoxPosition.x + prefab.boundingBoxSize.x, prefab.boundingBoxPosition.z + prefab.boundingBoxSize.z);
+        //ResetChunks(prefab.boundingBoxPosition.x, prefab.boundingBoxPosition.z, prefab.boundingBoxPosition.x + prefab.boundingBoxSize.x, prefab.boundingBoxPosition.z + prefab.boundingBoxSize.z);
         //prefab.Reset(GameManager.Instance.World);
+        prefab.ResetTerrain(GameManager.Instance.World);
+        prefab.ResetBlocksAndRebuild(GameManager.Instance.World, 0);
+        prefab.UpdateImposterView();
 
         SdtdConsole.Instance.Output($"Reset prefab {prefab.name}");
       }
@@ -101,8 +104,8 @@ namespace Botman
 
     private static void Reload(Dictionary<long, Chunk> modifiedChunks)
     {
-      //BMReload.ReloadForClients(modifiedChunks);
-      //modifiedChunks.Clear();
+      BMReload.ReloadForClients(modifiedChunks);
+      modifiedChunks.Clear();
     }
 
     public static void ResetChunks(int x1, int z1, int x2, int z2)

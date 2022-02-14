@@ -75,7 +75,7 @@ namespace Botman.Commands
 
       foreach (var prefab in GameManager.Instance.GetDynamicPrefabDecorator().GetDynamicPrefabs())
       {
-        if (prefab.name.ToLower().Contains("trader"))
+        if (prefab.name.ToLower().Contains("trader_"))
         {
           insertLines += TraceTraderInstance(x, prefab);
         }
@@ -93,19 +93,20 @@ namespace Botman.Commands
       return file;
     }
 
-    public static string TraceTraderInstance(int index, PrefabInstance prefab)
-    {
-      var name = $"BotmanTrader{index}";
-      var pos1 = prefab.boundingBoxPosition.x;
-      var pos2 = prefab.boundingBoxPosition.z;
-      var pos3 = prefab.boundingBoxPosition.x + prefab.boundingBoxSize.z;
-      var pos4 = prefab.boundingBoxPosition.z + prefab.boundingBoxSize.z;
+        public static string TraceTraderInstance(int index, PrefabInstance prefab)
+        {
+            var name = $"BotmanTrader{index}";
+            var pos1 = prefab.boundingBoxPosition.x;
+            var pos2 = prefab.boundingBoxPosition.z;
+            var pos3 = prefab.boundingBoxPosition.x + prefab.boundingBoxSize.z;
+            var pos4 = prefab.boundingBoxPosition.z + prefab.boundingBoxSize.z;
+            var prefabName = prefab.name;
 
-      return $"var {name} = L.polygon([[{pos1}, {pos2}], [{pos3}, {pos2}], [{pos3}, {pos4}], [{pos1}, {pos4}]]).addTo(map);\n" +
-             name + ".bindPopup(\"{_prefab.name}\");\n" +
-             name + ".setStyle({ color: '#" + Color + "' });\n" +
-             name + ".setStyle({ weight: 1 });\n" +
-             name + ".bindTooltip(\"Trader\", { opacity: .50, permanent: true }).openTooltip();\n";
+            return $"var {name} = L.polygon([[{pos1}, {pos2}], [{pos3}, {pos2}], [{pos3}, {pos4}], [{pos1}, {pos4}]]).addTo(map);\n" +
+                   name + ".bindPopup(\"" + prefabName + "\");\n" +
+                   name + ".setStyle({ color: '#" + Color + "' });\n" +
+                   name + ".setStyle({ weight: 1 });\n" +
+                   name + ".bindTooltip(\"Trader\", { opacity: .50, permanent: true }).openTooltip();\n";
+        }
     }
-  }
 }

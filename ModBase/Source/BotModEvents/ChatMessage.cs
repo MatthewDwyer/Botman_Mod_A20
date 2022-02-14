@@ -9,7 +9,7 @@ namespace Botman.Source.BotModEvents
     public static bool Hide = false;
     public static string CommandPrefix = "/";
     public static string PublicTextColor = "ffffff";
-    public static string PrivateTextColor = "EA3257";
+    public static string PrivateTextColor = "FFDEAD";
 
     public static bool Handler(ClientInfo _clientInfo, EChatType _chatType, int _senderId, string _message, string _mainName, bool _localizeMain, List<int> _recipientEntityIds)
     {

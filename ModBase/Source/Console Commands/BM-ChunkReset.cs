@@ -200,8 +200,8 @@ namespace Botman.Commands
         }
       }
 
-      //BMReload.ReloadForClients(chunks);
-      //SingletonMonoBehaviour<SdtdConsole>.Instance.Output($"~Botman~ Reset area {x1},{z1} to {x2},{z2}");
+      BMReload.ReloadForClients(chunks);
+      SingletonMonoBehaviour<SdtdConsole>.Instance.Output($"~Botman~ Reset area {x1},{z1} to {x2},{z2}");
     }
   }
 }

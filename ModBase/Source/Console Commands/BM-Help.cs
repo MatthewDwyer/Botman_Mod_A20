@@ -27,6 +27,7 @@ namespace Botman.Commands
           "bm-chunkreset\n" +
           "bm-clan\n" +
           "bm-clearinventory\n" +
+          "bm-dronefiledel \n" +
           "bm-exemptionlist \n" +
           "bm-fallingblocksremoval \n" +
           "bm-getowner \n" +

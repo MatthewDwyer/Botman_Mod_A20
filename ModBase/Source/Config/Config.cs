@@ -10,7 +10,7 @@ namespace Botman
   internal class Config
   {
     public static string BotName = "Botman";
-    public static string Version = "2.3.22";
+    public static string Version = "A20_2";
     public static bool VersionMatches;
     public static bool MapUpdateRequired;
 
@@ -812,6 +812,20 @@ namespace Botman
                   }
                 }
                 break;
+              case "dronefiledelete":
+                {
+                  if (!_line.HasAttribute("enabled"))
+                  {
+                    Log.Warning(string.Format("~Botman Notice~ Ignoring dronefiledelete.enabled from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                    continue;
+                  }
+                  if (!bool.TryParse(_line.GetAttribute("enabled"), out BMDroneFileDelete.Enabled))
+                  {
+                    Log.Warning(string.Format("~Botman Notice~ Ignoring dronefiledelete.enabled from config.xml because of missing attribute: {0}", subChild.OuterXml));
+                    continue;
+                  }
+                }
+                break;
               case "version":
                 {
                   if (_line.HasAttribute("value"))
@@ -1222,7 +1236,8 @@ namespace Botman
         sw.WriteLine(string.Format("        <config name=\"botname\" text=\"{0}\" color-public=\"{1}\" color-private=\"{2}\" />", BotName, ChatMessage.PublicTextColor, ChatMessage.PrivateTextColor));
         sw.WriteLine(string.Format("        <config name=\"chat_level_prefix\" enabled=\"{0}\" color=\"{1}\"/>", LevelSystem.ShowLevelEnabled, LevelSystem.ShowLevelColor));
         sw.WriteLine(string.Format("        <config name=\"chatcommands\" prefix=\"{0}\" hide=\"{1}\" />", ChatMessage.CommandPrefix, ChatMessage.Hide));
-//        sw.WriteLine(string.Format("        <config name=\"clans\" enabled=\"{0}\" max_clans=\"{1}\" max_players=\"{2}\" required_level_to_create=\"{3}\" />", BMClans.Enabled, BMClans.MaxClansAllowed, BMClans.PlayerLimit, BMClans.LevelToCreate));
+        sw.WriteLine(string.Format("        <config name=\"clans\" enabled=\"{0}\" max_clans=\"{1}\" max_players=\"{2}\" required_level_to_create=\"{3}\" />", BMClans.Enabled, BMClans.MaxClansAllowed, BMClans.PlayerLimit, BMClans.LevelToCreate));
+        sw.WriteLine(string.Format("        <config name=\"dronefiledelete\" enabled=\"{0}\" />", BMDroneFileDelete.Enabled));
         sw.WriteLine(string.Format("        <config name=\"dropminer\" enabled=\"{0}\" />", Patches.FallingBlocks.enabled));
         sw.WriteLine(string.Format("        <config name=\"custommessages\" enabled=\"{0}\" />", GameMessage.Enabled));
         sw.WriteLine(string.Format("        <config name=\"level_achievement_reward\" enabled=\"{0}\" dukes=\"{1}\" max_level=\"{2}\" />", LevelSystem.AwardDukesEnabled, LevelSystem.AwardDukesAmount, LevelSystem.AwardDukesMaxLevel));

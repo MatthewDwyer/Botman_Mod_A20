@@ -121,6 +121,19 @@ namespace Botman.Patches
         File.Delete(vehiclesFile);
         Log.Out("~Botman~ VEHICLES HAVE BEEN RESET.");
       }
+      if (BMDroneFileDelete.Enabled)
+      {
+        var dronesFile = string.Format("{0}/drones.dat", GameIO.GetSaveGameDir());
+        if (!File.Exists(dronesFile))
+        {
+          Log.Out("~Botman~ Could not locate drones file.");
+
+          return;
+        }
+
+        File.Delete(dronesFile);
+        Log.Out("~Botman~ DRONES HAVE BEEN RESET.");
+      }
     }
   }
 }

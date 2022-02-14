@@ -77,7 +77,7 @@ namespace Botman.Commands
 
       foreach (var prefab in GameManager.Instance.GetDynamicPrefabDecorator().GetDynamicPrefabs())
       {
-        if (prefab.name.ToLower().Contains("trader") && BMWebMapTraceTraders.Enabled)
+        if (prefab.name.ToLower().Contains("trader_") && BMWebMapTraceTraders.Enabled)
         {
           continue;
         }

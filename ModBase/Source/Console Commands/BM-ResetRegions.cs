@@ -482,6 +482,7 @@ namespace Botman.Commands
         {
           PrefabsOnly = true;
           SdtdConsole.Instance.Output("Only prefabs will be reset at the scheduled time.");
+          Config.UpdateXml();
 
           return;
         }
@@ -490,6 +491,7 @@ namespace Botman.Commands
         {
           PrefabsOnly = false;
           SdtdConsole.Instance.Output("Entire region will be reset during scheduled time.");
+          Config.UpdateXml();
 
           return;
         }
